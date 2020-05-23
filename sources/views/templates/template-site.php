@@ -16,9 +16,12 @@
 
     <h1> Este é o topo </h1>
 
+    <a href="<?php echo BASE_URL; ?>">home</a>
+    <a href="<?php echo BASE_URL; ?>about">about</a>
+
     <hr>
 
-    <?php $this->loadViewInTemplate($name, $data); ?>
+    <?php $this->loadViewInTemplate($viewName, $viewData); ?>
 
 </body>
 

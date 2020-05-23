@@ -4,11 +4,12 @@
 
         public function index() {
 
+            // Getting model infos
+            $model_info = new numbers();
+
             // Getting data
             $data = array(
-                'x' => 20,
-                'y' => 'etc',
-                'z' => 'anything'
+                'x' => $model_info->allNumbers()
             );
 
             $this->loadTemplate('home', $data);
