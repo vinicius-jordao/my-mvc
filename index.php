@@ -8,10 +8,10 @@
     // Checking if the files exist in 'controller', 'core' and 'models'
     spl_autoload_register(function($class) {
 
-        if(file_exists('sources/constrollers/'.$class.'.php')) {
+        if(file_exists('sources/controllers/'.$class.'.php')) {
 
             // Controllers
-            require 'sources/constrollers/'.$class.'.php';
+            require 'sources/controllers/'.$class.'.php';
 
         } else if(file_exists('sources/models/'.$class.'.php')) {
 
