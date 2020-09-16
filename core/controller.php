@@ -8,15 +8,15 @@
             // Get array key and change for variable
             extract($viewData);
 
-            require 'sources/views/pages/pages-site'.$viewName.'.php';
+            require 'sources/views/pages/'.$viewName.'.php';
 
         }
 
         // Load and show template
-        public function loadTemplate($viewName, $viewData = array()) {
+        public function loadTemplate($template, $viewName, $viewData = array()) {
 
             // Show template
-            require 'sources/views/templates/template-site.php';
+            require 'sources/views/templates/'.$template.'php';
 
         }
 
@@ -26,7 +26,7 @@
             // Get array key and change for variable
             extract($viewData);
 
-            require 'sources/views/pages/pages-site/'.$viewName.'.php';
+            require 'sources/views/pages/'.$viewName.'.php';
 
         }
 
