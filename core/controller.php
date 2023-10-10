@@ -2,6 +2,16 @@
 
     class controller {
 
+        // define page active
+        public function definePageActive($page) {
+            define("PAGE_ACTIVE", $page);
+        }
+
+        // define page title
+        public function definePageTitle($title) {
+            define("PAGE_TITLE", $title);
+        }
+
         // Load view
         public function loadView($viewName, $viewData = array()) {
 
@@ -13,10 +23,10 @@
         }
 
         // Load and show template
-        public function loadTemplate($template, $viewName, $viewData = array()) {
+        public function loadTemplate($viewName, $template, $viewData = array()) {
 
             // Show template
-            require 'sources/views/templates/'.$template.'php';
+            require 'sources/views/templates/'.$template.'.php';
 
         }
 

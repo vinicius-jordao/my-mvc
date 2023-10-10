@@ -1,7 +1,7 @@
 <?php
 
     // It is the center of the whole process
-    class Core {
+    class core {
 
         // This function is activated when entering any url
         public function start() {
@@ -62,21 +62,43 @@
 
             } else {
 
-                $current_controller = 'homeController';
+                $current_controller = 'indexController';
 
                 $current_action = 'index';
 
             }
 
+            // Testamos se a class existe
+			if(!class_exists($current_controller)) {
+                $html = "Entity <span style='color: #3f51b5;'>{$current_controller}</span> not found";
+                $controller = new controller();
+                $controller->loadView('default/exception', ["html" => $html]);
+                return false;
+            }
+
             // Starting selected controller
-            $classe = new $current_controller();
+            $class = new $current_controller();
+
+            // Testamos se o método existe
+            if(!method_exists($class, $current_action)) {
+                $html = "Action <span style='color: #3f51b5;'>{$current_controller} -> {$current_action}</span> not found";
+                $controller = new controller();
+                $controller->loadView('default/exception', ["html" => $html]);
+                return false;
+            }
+
+            $auth = auth::isOnline();
+
+            // check no auth
+            $rules = new rules();
+            if(!$rules->checkNoAuth($current_controller, $current_action) && !$auth)
+                header('Location: ' . HTTP . '/auth/_logout');
 
             // Starting selected action.
             // This function is for when the system does not know what action it is and needs to pass parameters
-            call_user_func_array(array($classe, $current_action), $params);
+            call_user_func_array(array($class, $current_action), $params);
 
         }
-
     }
 
 ?>

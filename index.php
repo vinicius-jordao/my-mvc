@@ -2,6 +2,9 @@
 
     session_start();
 
+    error_reporting(E_ALL);
+    ini_set('display_errors', '1');
+
     // Connection to database
     require('config.php');
 
@@ -28,7 +31,7 @@
     });
 
     // Class core
-    $core = new Core();
+    $core = new core();
 
     $core->start();
 
